@@ -1,34 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
+import { useState } from 'react';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [count, setCount] = useState(0); // keep track of number of total clicks
+  const [multiplier, setMultiplier] = useState(1); // keep track of current number of samosas per click
+  const updateCount = () => setCount(count + multiplier); // sets value of the state var count to its current value + multiplier
 
+  // describes the structure of the UI
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="App">
+      <div className="header">
+        <h1>Samosa Selector</h1>
+        <h2>Count: {count}</h2>
+        <img className="samosa" src="https://png.pngtree.com/png-vector/20240616/ourmid/pngtree-samosa-recipe-delicious-indian-appetizer-png-image_12776631.png" onClick={updateCount} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="container">
+      <div className="upgrade">
+        <h3>Double Stuffed 👯‍♀️</h3>
+        <p>2x per click</p>
+        <button>10 samosas</button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      <div className="upgrade">
+        <h3>Party Pack 🎉</h3>
+        <p>5x per click</p>
+        <button>	100 samosas</button>
+      </div>
+      <div className="upgrade">
+        <h3>Full Feast 👩🏽‍🍳</h3>
+        <p>10x per click</p>
+        <button>1000 samosas</button>
+      </div>
+      </div>
+    </div>
   )
 }
 
